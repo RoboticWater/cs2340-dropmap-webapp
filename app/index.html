@@ -1,0 +1,266 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DorpMorp</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!-- Modals -->
+    <div class="modal fade">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="add-report">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Report</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <label for="report-name">Report Name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Report Name" aria-describedby="name">
+            </div>
+            <br>
+            <label for="report-name">Location</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="input-lat" placeholder="Latitude" aria-describedby="x">
+              <input type="text" class="form-control" id="input-lng" placeholder="Longitude" aria-describedby="y">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button"><i class="fa fa-map-marker" aria-hidden="true"></i></button>
+              </span>
+            </div>
+            <br>
+            <label for="report-name">Type</label>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="type-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Bottled
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Bottled')">Bottled</a>
+                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Well')">Well</a>
+                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Stream')">Stream</a>
+                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Lake')">Lake</a>
+                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Spring')">Spring</a>
+                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Other')">Other</a>
+              </div>
+            </div>
+            <br>
+            <label for="report-name">Condition</label>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="cond-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Potable
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" onclick="changeDropDown('cond-drop', 'Potable')">Potable</a>
+                <a class="dropdown-item" onclick="changeDropDown('cond-drop', 'Waste')">Waste</a>
+                <a class="dropdown-item" onclick="changeDropDown('cond-drop', 'Treatable Clear')">Treatable Clear</a>
+                <a class="dropdown-item" onclick="changeDropDown('cond-drop', 'Treatable Muddy')">Treatable Muddy</a>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="edit-profile">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <label for="report-name">Name</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Name" aria-describedby="name">
+            </div>
+            <br>
+            <label for="report-name">Username</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Username" aria-describedby="name">
+            </div>
+            <br>
+            <label for="report-name">Email</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Email" aria-describedby="name">
+            </div>
+            <br>
+            <label for="report-name">Password</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Password" aria-describedby="name">
+            </div>
+            <br>
+            <label for="report-name">Confirm Password</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Confirm Password" aria-describedby="name">
+            </div>
+            <br>
+            <label for="report-name">Auth Level</label>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="type-auth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                User
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" onclick="changeDropDown('type-auth', 'User')">User</a>
+                <a class="dropdown-item" onclick="changeDropDown('type-auth', 'Worker')">Worker</a>
+                <a class="dropdown-item" onclick="changeDropDown('type-auth', 'Manager')">Manager</a>
+                <a class="dropdown-item" onclick="changeDropDown('type-auth', 'Administrator')">Administrator</a>
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="graph">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Graph</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <label for="year">Year</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Year" aria-describedby="name">
+            </div>
+            <br>
+            <label for="report-name">Location</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="input-lat" placeholder="Latitude" aria-describedby="x">
+              <input type="text" class="form-control" id="input-lng" placeholder="Longitude" aria-describedby="y">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button"><i class="fa fa-map-marker" aria-hidden="true"></i></button>
+              </span>
+            </div>
+            <br>
+            <canvas id="chart" width="400" height="400"></canvas>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modals -->
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary" id="nav-main">
+      <a class="navbar-brand" href="#">DorpMorp</a>
+      <ul class="navbar-nav mr-auto"></ul>
+        <button class="btn btn-secondary my-2 my-sm-0" onclick="showEditProfile()">Edit Profile</button>
+    </nav>
+    <div id="map-interface">
+      <div id="report-bar" class="col-md-3 col-sm-4">
+        <div class="buttons">
+          <button type="button" class="btn btn-block btn-primary" id="btn-add-report">Add Report</button>
+          <button type="button" class="btn btn-block btn-secondary" id="btn-graph">View Graph</button>
+        </div>
+        <div class="content">
+          <nav class="" id="nav-report">
+            <form class="form-inline">
+              <div class="btn-group btn-group-justified" id="report-filter" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                  <input type="radio" name="options" id="option1" autocomplete="off" value="all" checked> All
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="options" id="option2" autocomplete="off" value="source"> Source
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="options" id="option3" autocomplete="off" value="purity"> Purity
+                </label>
+              </div>
+            </form>
+          </nav>
+          <div id="reports">
+          </div>
+        </div>
+      </div>
+      <div id="map" class="col-md-9 col-sm-8"></div>
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/tether/dist/js/tether.js"></script>
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <script src="/bower_components/chart.js/dist/Chart.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase-messaging.js"></script>
+
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap/js/dist/util.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/alert.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/button.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/carousel.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/collapse.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/dropdown.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/modal.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/tab.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/tooltip.js"></script>
+    <script src="/bower_components/bootstrap/js/dist/popover.js"></script>
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+    <!-- Google Maps -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoHTgEVexnsFzdJwjLLhcExcacKeCTzaY&callback=initMap">
+    </script>
+  </body>
+</html>
