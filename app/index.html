@@ -23,206 +23,51 @@
     <!-- endbuild -->
   </head>
   <body>
-    <!-- Modals -->
-    <div class="modal fade">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save changes</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+    <div class="bottom"></div>
+    <div class=" card" id="signin-card">
+      <h3 class="card-header"><span id="header-login">Log in</span><span id="header-reg">Register</span></h3>
+      <div class="card-block">
+        <div id="hide-login" class="hider vis">
+          <div id="card-login" class="form-signin">
+          <h2 class="form-signin-heading">Please sign in</h2>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="modal fade" id="add-report">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Add Report</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <label for="report-name">Report Name</label>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Report Name" aria-describedby="name">
-            </div>
-            <br>
-            <label for="report-name">Location</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="input-lat" placeholder="Latitude" aria-describedby="x">
-              <input type="text" class="form-control" id="input-lng" placeholder="Longitude" aria-describedby="y">
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button"><i class="fa fa-map-marker" aria-hidden="true"></i></button>
-              </span>
-            </div>
-            <br>
-            <label for="report-name">Type</label>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="type-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Bottled
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Bottled')">Bottled</a>
-                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Well')">Well</a>
-                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Stream')">Stream</a>
-                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Lake')">Lake</a>
-                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Spring')">Spring</a>
-                <a class="dropdown-item" onclick="changeDropDown('type-drop', 'Other')">Other</a>
+        <div id="hide-reg" class="hider">
+          <div id="card-reg" class="form-signin">
+          <h2 class="form-signin-heading">Please register</h2>
+            <label for="inputName" class="sr-only">Name</label>
+            <input type="name" id="inputName" class="form-control" placeholder="Name" required autofocus>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="regEmail" class="form-control" placeholder="Email address" required>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="regPassword" class="form-control" placeholder="Password" required>
+            <label for="inputConfPassword" class="sr-only">Confirm Password</label>
+            <input type="confPassword" id="inputConfPassword" class="form-control" placeholder="Confirm Password" required>
+            <div class="input-group thing">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="auth-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  User
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" onclick="changeDropDown('auth-drop', 'User')">User</a>
+                  <a class="dropdown-item" onclick="changeDropDown('auth-drop', 'Worker')">Worker</a>
+                  <a class="dropdown-item" onclick="changeDropDown('auth-drop', 'Manager')">Manager</a>
+                  <a class="dropdown-item" onclick="changeDropDown('auth-drop', 'Administrator')">Administrator</a>
+                </div>
               </div>
             </div>
-            <br>
-            <label for="report-name">Condition</label>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="cond-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Potable
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" onclick="changeDropDown('cond-drop', 'Potable')">Potable</a>
-                <a class="dropdown-item" onclick="changeDropDown('cond-drop', 'Waste')">Waste</a>
-                <a class="dropdown-item" onclick="changeDropDown('cond-drop', 'Treatable Clear')">Treatable Clear</a>
-                <a class="dropdown-item" onclick="changeDropDown('cond-drop', 'Treatable Muddy')">Treatable Muddy</a>
-              </div>
+            <button class="btn btn-rg btn-primary btn-block" type="submit">Register</button>
+          </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
+            
         </div>
       </div>
-    </div>
-    <div class="modal fade" id="edit-profile">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Edit Profile</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <label for="report-name">Name</label>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Name" aria-describedby="name">
-            </div>
-            <br>
-            <label for="report-name">Username</label>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Username" aria-describedby="name">
-            </div>
-            <br>
-            <label for="report-name">Email</label>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Email" aria-describedby="name">
-            </div>
-            <br>
-            <label for="report-name">Password</label>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Password" aria-describedby="name">
-            </div>
-            <br>
-            <label for="report-name">Confirm Password</label>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Confirm Password" aria-describedby="name">
-            </div>
-            <br>
-            <label for="report-name">Auth Level</label>
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="type-auth" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                User
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" onclick="changeDropDown('type-auth', 'User')">User</a>
-                <a class="dropdown-item" onclick="changeDropDown('type-auth', 'Worker')">Worker</a>
-                <a class="dropdown-item" onclick="changeDropDown('type-auth', 'Manager')">Manager</a>
-                <a class="dropdown-item" onclick="changeDropDown('type-auth', 'Administrator')">Administrator</a>
-              </div>
-            </div>
-            <br>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="graph">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Graph</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <label for="year">Year</label>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Year" aria-describedby="name">
-            </div>
-            <br>
-            <label for="report-name">Location</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="input-lat" placeholder="Latitude" aria-describedby="x">
-              <input type="text" class="form-control" id="input-lng" placeholder="Longitude" aria-describedby="y">
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button"><i class="fa fa-map-marker" aria-hidden="true"></i></button>
-              </span>
-            </div>
-            <br>
-            <canvas id="chart" width="400" height="400"></canvas>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Modals -->
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary" id="nav-main">
-      <a class="navbar-brand" href="#">DorpMorp</a>
-      <ul class="navbar-nav mr-auto"></ul>
-        <button class="btn btn-secondary my-2 my-sm-0" onclick="showEditProfile()">Edit Profile</button>
-    </nav>
-    <div id="map-interface">
-      <div id="report-bar" class="col-md-3 col-sm-4">
-        <div class="buttons">
-          <button type="button" class="btn btn-block btn-primary" id="btn-add-report">Add Report</button>
-          <button type="button" class="btn btn-block btn-secondary" id="btn-graph">View Graph</button>
-        </div>
-        <div class="content">
-          <nav class="" id="nav-report">
-            <form class="form-inline">
-              <div class="btn-group btn-group-justified" id="report-filter" data-toggle="buttons">
-                <label class="btn btn-secondary active">
-                  <input type="radio" name="options" id="option1" autocomplete="off" value="all" checked> All
-                </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="options" id="option2" autocomplete="off" value="source"> Source
-                </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="options" id="option3" autocomplete="off" value="purity"> Purity
-                </label>
-              </div>
-            </form>
-          </nav>
-          <div id="reports">
-          </div>
-        </div>
-      </div>
-      <div id="map" class="col-md-9 col-sm-8"></div>
     </div>
 
     <!-- build:js scripts/vendor.js -->
@@ -255,12 +100,7 @@
     <!-- endbuild -->
     
     <!-- build:js scripts/main.js -->
-    <script src="scripts/main.js"></script>
+    <script src="scripts/login.js"></script>
     <!-- endbuild -->
-
-    <!-- Google Maps -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoHTgEVexnsFzdJwjLLhcExcacKeCTzaY&callback=initMap">
-    </script>
   </body>
 </html>

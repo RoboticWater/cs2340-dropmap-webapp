@@ -10,6 +10,18 @@ firebase.initializeApp(config);
 var map;
 var markers = {};
 var database = firebase.database()
+
+var uid;
+var waterReports;
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    uid = user.uid;
+  } else {
+    // No user is signed in.
+  }
+});
+
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
 	  zoom: 4,
@@ -68,11 +80,13 @@ function setMenuXY(caurrentLatLng) {
 	$('.contextmenu').css('top', y);
 };
 $(document).ready(function () {
+	$('#reports').empty();
 	var reports = database.ref('/waterReports/');
 	reports.once('value', function(snapshot) {
 	  snapshot.forEach(function(childSnapshot) {
 	    var childKey = childSnapshot.key;
 	    var data = childSnapshot.val();
+	    waterReports.push(data);
 	    var type = (data.virusPPM == -1 && data.contaminantPPM == -1) ? 'source' : 'purity';
 	    markers[data.id] = new google.maps.Marker({
           position: {lat: data.x, lng: data.y},
@@ -80,6 +94,7 @@ $(document).ready(function () {
         });
 	    $('#reports').append(buildReportButton(data.reportName, data.id, [data.x, data.y], type));
 	  });
+	  console.log(reports);
 	});
 	$('input[name=options]').on('change', function() {
 		var value = $('#report-filter  input:radio:checked').val();
@@ -119,6 +134,14 @@ function buildReportButton(name, id, location, type) {
 }
 
 function showEditProfile() {
+	var reports = database.ref('/users/' + uid);
+	reports.once('value', function(snapshot) {
+		var data = snapshot.val();
+		$('#prof-name').val(data.name);
+		$('#prof-email').val(data.email);
+		$('#prof-uname').val(data.username);
+		changeDropDown('auth-drop', data.authLevel);
+	});
 	$('#edit-profile').modal("show");
 }
 
@@ -143,3 +166,33 @@ function showGraph(lat, lng) {
 		type: 'scatter'
 	});
 }
+
+function validateAddWaterReport() {
+
+}
+function validateEditWaterReport() {
+
+}
+function validateProfile() {
+
+}
+
+function signOut() {
+	firebase.auth().signOut().then(function() {
+    	open('index.html','_self',false);
+	}, function(error) {
+		alert('Sign Out Error; ' + error);
+	});
+}
+
+function submitReport() {
+	var reports = database.ref('/waterReports/');
+	var data = {};
+	data.name = 
+	data.uid =
+	data.rid =
+	data.x =
+	data.y =
+	reports.push(data);
+}
+
