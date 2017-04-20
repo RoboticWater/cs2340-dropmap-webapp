@@ -7,7 +7,10 @@ var config = {
   messagingSenderId: "100979827986"
 };
 firebase.initializeApp(config);
-
+var database = firebase.database();
+var waterReportRef = database.ref('/waterReports/');
+var histRef = database.ref('/reportHistory/');
+var userRef = database.ref('/users/');
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     open('map.html','_self',false);
@@ -57,13 +60,23 @@ function register() {
   var email = $('#regEmail').val();
   var password = $('#regPassword').val();
   firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
-    firebase.auth().signInWithEmailAndPassword(email, password).then(function(user) {
-    }).catch(function(error) {
+    saveProfile(user.uid);
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
     });
   }).catch(function(error) {
     var errorCode = error.code;
     var errorMessage = error.message;
+  });
+}
+function saveProfile(uid) {
+  var ref = userRef.child(uid);
+  ref.set({
+    name: $('#inputName').val(),
+    email: $('#regEmail').val(),
+    authLevel: $('#auth-drop').html(),
+    password: $('#regPassword').val(),
+    id: uid
   });
 }

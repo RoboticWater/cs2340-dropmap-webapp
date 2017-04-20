@@ -28,8 +28,8 @@ function changeDropDown(id, val) {
 function showGraph(lat, lng) {
 	$('.contextmenu').remove();
 	$('#graph').modal("show");
-	if (lat != null) $('#input-lat').val(lat);
-	if (lng != null) $('#input-lng').val(lng);
+	if (lat != null) $('#graph-lat').val(lat);
+	if (lng != null) $('#graph-lng').val(lng);
 	updateGraph();
 }
 

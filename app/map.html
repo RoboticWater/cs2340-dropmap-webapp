@@ -225,7 +225,7 @@
             
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-primary" onclick="saveEditProfile()">Update</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -246,15 +246,27 @@
               <input type="text" class="form-control" placeholder="Year" aria-describedby="name">
             </div>
             <br>
-            <label for="report-name">Location</label>
+            <label for="location">Location</label>
             <div class="input-group">
-              <input type="text" class="form-control" id="input-lat" placeholder="Latitude" aria-describedby="x">
-              <input type="text" class="form-control" id="input-lng" placeholder="Longitude" aria-describedby="y">
+              <input type="text" class="form-control" id="graph-lat" placeholder="Latitude" aria-describedby="x">
+              <input type="text" class="form-control" id="graph-lng" placeholder="Longitude" aria-describedby="y">
               <span class="input-group-btn">
                 <button class="btn btn-secondary" type="button"><i class="fa fa-map-marker" aria-hidden="true"></i></button>
               </span>
             </div>
             <br>
+            <label for="report-name">Graph Type</label>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="graph-type-drop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contaminant
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" onclick="changeDropDown('graph-type-drop', 'Contaminant')">Contaminant</a>
+                <a class="dropdown-item" onclick="changeDropDown('graph-type-drop', 'Virus')">Virus</a>
+
+              </div>
+            </div>
+          </div>
             <canvas id="chart" width="400" height="400"></canvas>
           </div>
           <div class="modal-footer">

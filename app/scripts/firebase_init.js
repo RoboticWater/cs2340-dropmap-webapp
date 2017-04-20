@@ -19,15 +19,30 @@ var markers = [];
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     uid = user.uid;
+    console.log(user);
     userRef.child(uid).once('value', function(snapshot) {
-    	var data = snapshot.val();
-    	if (data.authLevel === 'Manager') {
-    		$('.purity-rel').removeClass('purity-rel');
-    		$('.graph-rel').removeClass('graph-rel');
-    	}
-    	if (data.authLevel === 'Worker') $('.purity-rel').removeClass('hide');
+      var data = snapshot.val();
+      if (data === null) {
+        setTimeout(retry, 2000);
+      }
+      if (data.authLevel === 'Manager') {
+        $('.purity-rel').removeClass('purity-rel');
+        $('.graph-rel').removeClass('graph-rel');
+      }
+      if (data.authLevel === 'Worker') $('.purity-rel').removeClass('hide');
     });
   } else {
   	open('index.html', '_self', false);
   }
 });
+
+function retry() {
+  userRef.child(uid).once('value', function(snapshot) {
+      var data = snapshot.val();
+      if (data.authLevel === 'Manager') {
+        $('.purity-rel').removeClass('purity-rel');
+        $('.graph-rel').removeClass('graph-rel');
+      }
+      if (data.authLevel === 'Worker') $('.purity-rel').removeClass('hide');
+    });
+}
