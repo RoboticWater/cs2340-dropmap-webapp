@@ -15,11 +15,11 @@ $(function () {
 });
 
 function buildReportButton(name, id, location, type) {
-	return '<div class="btn-group btn-report" role="group" aria-label="' + id +'">\
-	           <a class="btn name btn-outline-primary" data-type="' + type + '" href="#" role="button" onclick="showEditReport(\'' + id +'\')">' + name + '</a>\
-	           <a class="btn loc btn-secondary end purity-rel" href="#" role="button" onclick="showUpdateReport(\'' + id +'\')""><i class="fa fa-plus" aria-hidden="true"></i></a>\
-	           <a class="btn loc btn-secondary end" href="#' +  location[0] + ',' + location[1] + '" role="button"><i class="fa fa-map-marker" aria-hidden="true"></i></a>\
-          	</div>'
+	return '<div class="btn-group btn-report" role="group" aria-label="' + id +'">'+
+	           '<a class="btn name btn-outline-primary" data-type="' + type + '" href="#" role="button" onclick="showEditReport(\'' + id +'\')">' + name + '</a>'
+	           + (authLevel !== 'User' ? '<a class="btn loc btn-secondary end purity-rel" href="#" role="button" onclick="showUpdateReport(\'' + id +'\')""><i class="fa fa-plus" aria-hidden="true"></i></a>' : '') + 
+	           '<a class="btn loc btn-secondary end" href="#' +  location[0] + ',' + location[1] + '" role="button"><i class="fa fa-map-marker" aria-hidden="true"></i></a>'+
+          	'</div>';
 }
 
 function changeDropDown(id, val) {

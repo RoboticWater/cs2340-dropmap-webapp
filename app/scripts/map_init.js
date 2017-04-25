@@ -17,7 +17,7 @@ function updateMarkers() {
             '<p>' + data.type + '</p>'+
             '<p>' + data.condition + '</p>' + 
            	'<a href="#" onclick="showEditReport(\'' + data.id + '\')">View Report</a> '+
-           	'<a href="#" onclick="showUpdateReport(\'' + data.id + '\')">Update Report</a> '+
+           	(authLevel !== 'User' ?'<a href="#" onclick="showUpdateReport(\'' + data.id + '\')">Update Report</a> ' : '')+
             '</div>'+
             '</div>';
         var infowindow = new google.maps.InfoWindow({
@@ -46,7 +46,7 @@ function showContextMenu(latLng) {
 	var contextmenuDir = document.createElement("div");
 	contextmenuDir.className  = 'contextmenu';
 	contextmenuDir.innerHTML = '<a id="menu1" onclick="showAddReport(' + latLng.lat() + ',' + latLng.lng() + ')">Add Report at Location<\/a>'
-	+ '<a id="menu2" onclick="showGraph(' + latLng.lat() + ',' + latLng.lng() + ')">View Graph at Location<\/a>';
+	+  '<a id="menu2" onclick="showGraph(' + latLng.lat() + ',' + latLng.lng() + ')">View Graph at Location<\/a>';
 
 	$(map.getDiv()).append(contextmenuDir);
 

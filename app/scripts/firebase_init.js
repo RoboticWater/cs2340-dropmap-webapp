@@ -13,23 +13,20 @@ var waterReportRef = database.ref('/waterReports/');
 var histRef = database.ref('/reportHistory/');
 var userRef = database.ref('/users/');
 var uid;
+var authLevel;
 var waterReports = [];
 var markers = [];
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     uid = user.uid;
-    console.log(user);
     userRef.child(uid).once('value', function(snapshot) {
       var data = snapshot.val();
-      if (data === null) {
-        setTimeout(retry, 2000);
-      }
+      authLevel = data.authLevel;
       if (data.authLevel === 'Manager') {
-        $('.purity-rel').removeClass('purity-rel');
-        $('.graph-rel').removeClass('graph-rel');
+        $('.graph-rel').removeClass('hide');
       }
-      if (data.authLevel === 'Worker') $('.purity-rel').removeClass('hide');
+      updateReports();
     });
   } else {
   	open('index.html', '_self', false);
